@@ -1,23 +1,25 @@
-# SurvSim: Smart Surveillance System Simulator v1.0
+# SurvSim v1.1 — Smart Surveillance System Simulator
 
-A C-based console simulation that mimics an AI-powered surveillance system.
+## 🎯 Overview
+SurvSim is a C-based simulation of a smart AI surveillance backend.
+It demonstrates how a real camera-based monitoring system tracks cameras,
+detects motion, and raises alerts — before integrating with YOLO and Jetson hardware.
 
-## 🎯 Objective
-Simulate basic operations of an object detection system using core C programming concepts.
+## 🧩 Features
+- Add up to 5 simulated cameras
+- Track motion detection per camera
+- Persistent state using static memory
+- Summary of total alerts and cameras
+- Structured modular C code design
 
-## 🧠 Features
-- Add and manage multiple cameras
-- Simulate motion detection events
-- Trigger alerts on detection
-- Display live system summary
+## 🧠 Concepts Used
+- Data types, arrays, loops, decision-making
+- Structures and pointers
+- Storage classes (`static`, `register`)
+- Functions and modular programming
+- Boolean logic and state management
 
-## 🧩 Concepts Demonstrated
-✅ Arrays  
-✅ Loops  
-✅ Structures  
-✅ Pointers  
-✅ Functions  
-✅ Decision Making  
-✅ Storage Classes  
-
-## 💻 Usage
+## ⚙️ Compile and Run
+```bash
+gcc main.c -o SurvSim
+./SurvSim
