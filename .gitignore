@@ -1,4 +1,5 @@
-surv_log.txt
-survsim.exe
+*.exe
 *.o
 *.log
+surv_log.txt
+a.out
