@@ -5,7 +5,8 @@
 void simulateDetection() {
     int camID;
     printf("Enter Camera ID to simulate motion: ");
-    scanf("%d", &camID);
+
+    camID = safeReadInt();   // UPDATED: safe integer input
 
     if (camID <= totalCameras && camID > 0) {
         cameras[camID - 1].motionDetected = true;
@@ -25,5 +26,5 @@ void triggerAlert(Camera *cam) {
             "ALERT #%d\nCamera: %s (ID %d)\n",
             alertCount, cam->location, cam->id);
 
-    logEvent(logMsg);
+    logEvent(logMsg); 
 }

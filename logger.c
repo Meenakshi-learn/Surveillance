@@ -20,3 +20,21 @@ void logEvent(const char *message) {
 
     fclose(fp);   
 }
+
+void showLog() {
+    FILE *fp = fopen("surv_log.txt", "r");
+    if (!fp) {
+        printf("No log file found.\n");
+        return;
+    }
+
+    char line[256];
+    printf("\n----- LOG FILE -----\n");
+    
+    while (fgets(line, sizeof(line), fp)) {
+        printf("%s", line);
+    }
+    printf("---------------------\n");
+
+    fclose(fp);
+}
