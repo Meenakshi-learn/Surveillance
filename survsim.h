@@ -15,6 +15,8 @@ typedef struct {
 extern Camera cameras[5];
 extern int totalCameras;
 extern int alertCount;
+extern const char *validLocations[6];
+extern const int totalValidLocations;
 
 // ---------- FUNCTION PROTOTYPES ----------
 void addCamera();
@@ -23,5 +25,9 @@ void simulateDetection();
 void triggerAlert(Camera *cam);
 void displaySummary();
 void logEvent(const char *message);
-
+void clearInputBuffer();
+int safeReadInt();
+void safeReadString(char *buffer, int size);
+void showLog();
+int isValidLocation(const char *loc);
 #endif
