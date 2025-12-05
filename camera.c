@@ -54,8 +54,8 @@ void addCamera() {
             }
         }
 
-        cam.isActive = true;
-        cam.motionDetected = false;
+        cam.status = CAMERA_ACTIVE;
+        cam.motion = MOTION_CLEAR;
 
         cameras[totalCameras] = cam;
         totalCameras++;
@@ -70,10 +70,11 @@ void addCamera() {
 void showStatus() {
     printf("\nCamera Status:\n");
     for (int i = 0; i < totalCameras; i++) {
-        printf("ID: %d | Location: %s | Status: %s | Motion: %s\n",
+        printf("ID: %d | Location: %s | Status: %s | Motion: %s\n"),
                cameras[i].id,
                cameras[i].location,
-               cameras[i].isActive ? "Active" : "Inactive",
-               cameras[i].motionDetected ? "Detected" : "Clear");
+               cameras[i].status == CAMERA_ACTIVE ? "Active" : "Inactive",
+
+              cameras[i].motion == MOTION_DETECTED ? "Detected" : "Clear";
     }
 }

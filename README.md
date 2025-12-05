@@ -1,69 +1,81 @@
 SurvSim: Smart Surveillance System Simulator v1.3
 
 Author: Meenakshi
-Version: 1.3 — 21st November 2025
-Technologies: C Programming (Modular Design, File Handling, Safe Input, Validation)
+Version: 1.2 — 5th December 2025
+**Technologies:** C Programming (Modular Design, Enums, Function Pointers, Callback Functions, Stack, File Handling, Input Safety)
 
-A C-based console simulation that models the backend logic of an AI-powered surveillance system.
+A fully modular C-based console simulation representing the backend of an AI-driven surveillance system — now with alert stacks, enums, and callback handlers.
 
-🎯 Objective
+---
 
-Extend SurvSim v1.2 with environment-based camera location validation and improved user experience, making the system behave like a real surveillance configuration tool.
+## 🎯 Objective
 
-🧠 Features
+To simulate real-world surveillance backend behavior using advanced C programming concepts such as structures, enums, stacks, safe input, file logging, and callback-based alert handlers.
 
-Add and manage multiple cameras
+---
 
-Choose from predefined valid camera locations (NEW)
+main.c            — Menu system + alert mode switching
+camera.c          — Camera adding, status display, location validation
+detection.c       — Motion detection, stack push, callback execution
+summary.c         — System-wide summary
+logger.c          — Log writing + log viewing
+input.c           — Safe input functions (strings, ints)
+survsim.h         — All structs, enums, globals & prototypes
+surv_log.txt      — Auto-generated log file
 
-Reject invalid or garbage locations
+---
 
-Simulate motion detection events
+ gcc main.c camera.c detection.c summary.c logger.c input.c stack.c -o survsim && ./survsim
 
-Trigger alerts on detection
+---
 
-Log each alert with timestamps
+## 🧠 Key Features (v1.4)
 
-View the log file directly in the terminal
+### ✔ 1. Camera Management
+- Add and manage multiple cameras (up to 5)
+- Cameras now use **status enums**:
+  - `CAMERA_ACTIVE`
+  - `CAMERA_INACTIVE`
+- Motion state managed using enums:
+  - `MOTION_CLEAR`
+  - `MOTION_DETECTED`
 
-Safe input system (no crashes / infinite loops)
+### ✔ 2. Predefined Valid Camera Locations
+- Only allows selecting from a defined environment:
+  - Entrance  
+  - LivingRoom  
+  - Kitchen  
+  - Hallway  
+  - Garage  
+  - Backyard  
+- User cannot enter garbage or unsupported locations
 
-Modular multi-file architecture
+### ✔ 3. Safe Input System (No Crashes!)
+- `safeReadInt()` to avoid scanf crashes  
+- `safeReadString()` for protected string input  
+- `clearInputBuffer()` to handle bad inputs  
+- Prevents infinite loops and invalid menu choices  
 
-Display live system summary
+### ✔ 4. Logging System (Persistent Storage)
+- Logs every alert with a timestamp
+- Stores logs in `surv_log.txt`
+- Added `showLog()` to display logs directly in terminal
 
-🧩 Concepts Demonstrated
+### ✔ 5. Callback-Based Alert Modes (Function Pointers)
+SurvSim now supports **runtime selectable alert behaviors**:
 
-✅ Arrays
+- **Default Alert**
+- **Loud Alert (simulated siren)**
+- **Silent Alert (stealth mode)**
 
-✅ Loops
+All handled using:
 
-✅ Structures (typedef)
+```c
+typedef void (*AlertCallback)(Camera *cam);
 
-✅ Pointers
+And implemented in:
 
-✅ Functions
-
-✅ File Handling
-
-✅ Input Validation
-
-✅ Error Handling
-
-✅ Storage Classes
-
-✅ Modular Programming
-
-📍 Predefined Valid Camera Locations (v1.3)
-
-The system only accepts these camera locations:
-
-Entrance
-LivingRoom
-Kitchen
-Hallway
-Garage
-Backyard
-
-
-Any other value is rejected until the user provides a valid one.
+defaultAlertHandler()
+loudAlertHandler()
+silentAlertHandler()
+User can switch alert mode from the menu.
